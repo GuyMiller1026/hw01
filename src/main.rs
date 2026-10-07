@@ -1,4 +1,3 @@
-fn main() {
 fn print_menu() {
     println!();
     println!("1) Buy food");
@@ -7,4 +6,8 @@ fn print_menu() {
     println!("4) View status");
     println!("5) Quit");
 }
+fn can_afford(gold: u64, cost: u64) -> bool {
+    gold >= cost
+}
+fn main() {
 }
