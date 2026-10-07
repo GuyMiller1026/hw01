@@ -1,3 +1,4 @@
+use std::io;
 fn print_menu() {
     println!();
     println!("1) Buy food");
@@ -18,6 +19,31 @@ fn hunt_food(roll: u64) -> u64 {
         20
     } else {
         40
+    }
+}
+fn read_number(min: u64, max: u64) -> u64 {
+    loop {
+        println!("Enter a number from {} to {}:", min, max);
+
+        let mut input = String::new();
+        io::stdin()
+            .read_line(&mut input)
+            .expect("Failed to read line");
+
+        let number: u64 = match input.trim().parse() {
+            Ok(n) => n,
+            Err(_) => {
+                println!("That is not a whole number. Try again.");
+                continue;
+            }
+        };
+
+        if number < min || number > max {
+            println!("That number is out of range. Try again.");
+            continue;
+        }
+
+        return number;
     }
 }
 fn main() {
